@@ -16,4 +16,4 @@ if 'http' in txt_to_qr:
     txt_to_qr = txt_to_qr[txt_to_qr.find('www')+4:]
 
 img = qr.make_image()
-img.save(f"QR_Codes/{txt_to_qr[:10]}{'...' if len(txt_to_qr) > 10 else ''}_QRcode.png")
+img.save(f"./{txt_to_qr[:10]}{'...' if len(txt_to_qr) > 10 else ''}_QRcode.png")
