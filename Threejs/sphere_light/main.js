@@ -13,9 +13,15 @@ document.body.appendChild(renderer.domElement);
 const axesHelper = new THREE.AxesHelper(1);
 scene.add(axesHelper);
 
+// Draws light
+const light = new THREE.DirectionalLight(0xffffff, 1);
+light.position.set(5, 10, 5);
+light.castShadow = true;
+scene.add(light);
+
 // Draws Cube
 const cube_geometry = new THREE.BoxGeometry( 1, 1, 1 );
-const cube_material = new THREE.MeshBasicMaterial({color: 0x00ff00});
+var cube_material = new THREE.MeshStandardMaterial({color: 0x00ff00});
 const cube = new THREE.Mesh(cube_geometry, cube_material);
 
 cube.position.set(0,1,0);
@@ -33,7 +39,7 @@ scene.add(wireframe);
 
 // Draws Plane
 const plane_geometry = new THREE.PlaneGeometry(5,5);
-const plane_material = new THREE.MeshBasicMaterial({color: 0x111111});
+const plane_material = new THREE.MeshStandardMaterial({color: 0x111111});
 const plane = new THREE.Mesh (plane_geometry, plane_material);
 
 plane.rotation.x = - Math.PI / 2;
@@ -44,6 +50,19 @@ scene.add(plane);
 camera.position.set(3,2,5);
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.target.copy(cube.position);
+
+
+// EVENT LISTENERS
+
+window.addEventListener("keydown", (event) => {
+    if (event.code == 'Space') {
+        light.castShadow = !light.castShadow;
+    }
+});
+
+// GUI
+
+
 
 
 function animate() {
@@ -57,3 +76,7 @@ function animate() {
 
 	renderer.render( scene, camera );
 }
+
+
+
+
