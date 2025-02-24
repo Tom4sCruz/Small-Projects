@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>My first three.js app</title>
+		<style>
+			body { margin: 0; overflow: hidden;}
+			h1 {color: white;
+				font-size: 20px;
+				margin: 5px;
+				padding: 0;}
+			input, select {margin:10px;}
+			#gui {
+				position:fixed;
+				background-color: rgb(134, 134, 134);
+				border-radius: 10px;
+				margin: 10px 10px;
+				padding: 0 10px;
+				bottom: 0;
+				right: 0;
+			}
+		</style>
+        <script type="importmap">
+            {
+              "imports": {
+                "three": "https://cdn.jsdelivr.net/npm/three@0.173.0/build/three.module.js",
+                "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.173.0/examples/jsm/"
+              }
+            }
+          </script>
+	</head>
+	<body>
+		<div id="gui">
+			<h1>Camera</h1>
+			<select name="cameras" id="cameras" >
+				<option value="pers" selected>Perspective Camera</option>
+				<option value="ortho">Orthographic Camera</option>
+			</select>
+			<h1>Color</h1>
+			<input type="color" id="color" value="#00ff00">
+			<h1>Size</h1>
+			<input type="range" id="size" min="0.2" max="3" step="0.1" value="1">
+			<h1>Height</h1>
+			<input type="number" id="height" value="1">
+			<h1>Transparency</h1>
+			<input type="checkbox" id="transparency">
+			<h1>Wireframe</h1>
+			<input type="checkbox" id="wireframe" checked>
+		</div>
+		<script type="module" src="/main.js"></script>
+	</body>
+</html>
